@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://dxoek2b0fy7lc"]
+
+[ext_resource type="Texture2D" uid="uid://bm30au8mjfc2f" path="res://addons/virtual_joystick/textures/joystick_base_outline.png" id="1_7vcg4"]
+[ext_resource type="Script" path="res://joystick.gd" id="1_63d4c"]
+[ext_resource type="Texture2D" uid="uid://dt13r06u87fib" path="res://addons/virtual_joystick/textures/joystick_tip_arrows.png" id="2_n2k6m"]
+[ext_resource type="Script" path="res://joystick_tip_arrows.gd" id="4_ruq03"]
+
+[node name="Joystick" type="Node2D"]
+modulate = Color(1, 1, 1, 0.498039)
+self_modulate = Color(1, 1, 1, 0.498039)
+scale = Vector2(0.66, 0.66)
+script = ExtResource("1_63d4c")
+
+[node name="JoystickBaseOutline" type="Sprite2D" parent="."]
+texture = ExtResource("1_7vcg4")
+
+[node name="JoystickTipArrows" type="Sprite2D" parent="."]
+texture = ExtResource("2_n2k6m")
+script = ExtResource("4_ruq03")
+
+[node name="Button" type="Button" parent="."]
+self_modulate = Color(1, 1, 1, 0)
+offset_left = -101.515
+offset_top = -98.4848
+offset_right = 100.485
+offset_bottom = 101.515
+
+[connection signal="button_down" from="Button" to="JoystickTipArrows" method="_on_button_button_down"]
+[connection signal="button_up" from="Button" to="JoystickTipArrows" method="_on_button_button_up"]
