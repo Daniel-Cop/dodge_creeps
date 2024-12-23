@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://2amora5jeary"]
+[gd_scene load_steps=6 format=3 uid="uid://2amora5jeary"]
 
 [ext_resource type="Script" path="res://hud.gd" id="1_cpp30"]
 [ext_resource type="FontFile" uid="uid://qxm8uf5snev5" path="res://fonts/Xolonium-Regular.ttf" id="1_vvqt1"]
@@ -8,6 +8,9 @@ action = &"start_game"
 
 [sub_resource type="Shortcut" id="Shortcut_lc8dp"]
 events = [SubResource("InputEventAction_ds3tm")]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rmttj"]
+size = Vector2(200, 100)
 
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource("1_cpp30")
@@ -68,5 +71,11 @@ text = "Start"
 wait_time = 2.0
 one_shot = true
 
+[node name="TouchScreenButton" type="TouchScreenButton" parent="."]
+position = Vector2(241, 551)
+shape = SubResource("RectangleShape2D_rmttj")
+action = "start_game"
+
 [connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="timeout" from="MessageTimer" to="." method="_on_message_timer_timeout"]
+[connection signal="pressed" from="TouchScreenButton" to="." method="_on_touch_screen_button_pressed"]
